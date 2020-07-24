@@ -43,7 +43,7 @@ public class PacketTableModel extends AbstractTableModel {
             case 1:
                 return "転送回数";
             case 2:
-                return "受信先";
+                return "送信先";
             default:
                 return null;
         }

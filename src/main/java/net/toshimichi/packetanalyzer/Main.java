@@ -1,5 +1,6 @@
 package net.toshimichi.packetanalyzer;
 
+import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
 import net.toshimichi.packetanalyzer.commands.FrameShowCommand;
 import net.toshimichi.packetanalyzer.commands.MonitorToggleCommand;
 import net.toshimichi.packetanalyzer.utils.NativeNettyUtils;
@@ -9,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class Main extends JavaPlugin {
@@ -27,6 +29,13 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
+
+        try {
+            UIManager.setLookAndFeel(new WindowsLookAndFeel());
+        } catch (UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
+
         plugin = this;
         getCommand("frame").setExecutor(new FrameShowCommand());
         getCommand("monitor").setExecutor(new MonitorToggleCommand());

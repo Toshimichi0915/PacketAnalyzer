@@ -1,6 +1,7 @@
 package net.toshimichi.packetanalyzer.gui;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class PacketTable extends JTable {
 
@@ -8,6 +9,9 @@ public class PacketTable extends JTable {
 
     public PacketTable() {
         model = new PacketTableModel();
+        Font font = new Font("Meiryo", Font.PLAIN, 12);
+        setFont(font);
+        getTableHeader().setFont(font);
         setModel(model);
     }
 
