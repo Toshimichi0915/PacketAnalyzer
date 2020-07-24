@@ -1,0 +1,12 @@
+name: "PacketAnalyzer"
+version: "1.0"
+main: "net.toshimichi.packetanalyzer.Main"
+commands:
+  frame:
+    usage: "/frame"
+    description: "パケット解析ウィンドウを表示します"
+    permission: "packetanalyzer.frame"
+  monitor:
+    usage: "/monitor <player>"
+    description: "パケットのキャプチャを開始, 終了します"
+    permission: "packetanalyzer.monitor"
