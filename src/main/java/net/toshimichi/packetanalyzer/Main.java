@@ -1,6 +1,5 @@
 package net.toshimichi.packetanalyzer;
 
-import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
 import net.toshimichi.packetanalyzer.commands.FrameShowCommand;
 import net.toshimichi.packetanalyzer.commands.MonitorToggleCommand;
 import net.toshimichi.packetanalyzer.utils.NativeNettyUtils;
@@ -11,13 +10,11 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class Main extends JavaPlugin {
 
     private static final NativeNettyUtils nettyUtils = new NativeNettyUtils();
     private static Main plugin;
-    private static final String name = "packet_monitor";
 
     public static Plugin getPlugin() {
         return plugin;
@@ -31,8 +28,8 @@ public class Main extends JavaPlugin {
     public void onEnable() {
 
         try {
-            UIManager.setLookAndFeel(new WindowsLookAndFeel());
-        } catch (UnsupportedLookAndFeelException e) {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (UnsupportedLookAndFeelException | IllegalAccessException | InstantiationException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
@@ -43,8 +40,8 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        for(Player p : Bukkit.getOnlinePlayers()) {
-            nettyUtils.extract(p, "monitor");
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            nettyUtils.extract(p, "packet_monitor");
         }
     }
 }

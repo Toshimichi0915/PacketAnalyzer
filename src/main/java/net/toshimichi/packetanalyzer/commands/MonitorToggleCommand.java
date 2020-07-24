@@ -34,11 +34,11 @@ public class MonitorToggleCommand implements CommandExecutor {
         }
 
         if (enabled.contains(player)) {
-            Main.getNettyUtils().extract(player, "monitor");
+            Main.getNettyUtils().extract(player, "packet_monitor");
             commandSender.sendMessage("モニタリングを終了します");
             enabled.remove(player);
         } else {
-            Main.getNettyUtils().inject(player, "monitor", new PacketHandler(player));
+            Main.getNettyUtils().inject(player, "packet_monitor", new PacketHandler(player));
             commandSender.sendMessage("モニタリングを開始します");
             enabled.add(player);
         }
