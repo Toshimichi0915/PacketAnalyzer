@@ -5,7 +5,7 @@ import org.apache.commons.lang.ArrayUtils;
 import javax.swing.table.AbstractTableModel;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 
 public class PacketTableModel extends AbstractTableModel {
     private final Object packet;
@@ -13,8 +13,14 @@ public class PacketTableModel extends AbstractTableModel {
 
     public PacketTableModel(Object packet) {
         this.packet = packet;
-        fields = new ArrayList<>();
-        Collections.addAll(fields, packet.getClass().getDeclaredFields());
+        fields = getFields(packet.getClass(), new ArrayList<>());
+    }
+
+    private ArrayList<Field> getFields(Class<?> clazz, ArrayList<Field> list) {
+        Class<?> superClass = clazz.getSuperclass();
+        list.addAll(Arrays.asList(clazz.getDeclaredFields()));
+        if (superClass.equals(Object.class)) return list;
+        return getFields(superClass, list);
     }
 
     @Override
