@@ -30,14 +30,14 @@ public class PacketTableModel extends AbstractTableModel {
                 continue;
             }
             if (obj instanceof Object[]) count += ((Object[]) obj).length + 1;
-            else if(obj instanceof byte[]) count += ((byte[]) obj).length;
-            else if(obj instanceof short[]) count += ((short[]) obj).length;
-            else if(obj instanceof int[]) count += ((int[]) obj).length;
-            else if(obj instanceof long[]) count += ((long[]) obj).length;
-            else if(obj instanceof float[]) count += ((float[]) obj).length;
-            else if(obj instanceof double[]) count += ((double[]) obj).length;
-            else if(obj instanceof boolean[]) count += ((boolean[]) obj).length;
-            else if(obj instanceof char[]) count += ((char[]) obj).length;
+            else if (obj instanceof byte[]) count += ((byte[]) obj).length;
+            else if (obj instanceof short[]) count += ((short[]) obj).length;
+            else if (obj instanceof int[]) count += ((int[]) obj).length;
+            else if (obj instanceof long[]) count += ((long[]) obj).length;
+            else if (obj instanceof float[]) count += ((float[]) obj).length;
+            else if (obj instanceof double[]) count += ((double[]) obj).length;
+            else if (obj instanceof boolean[]) count += ((boolean[]) obj).length;
+            else if (obj instanceof char[]) count += ((char[]) obj).length;
             else count++;
         }
         return count;
@@ -64,10 +64,12 @@ public class PacketTableModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
+        Field field = null;
         String fieldName = null;
         Object obj = null;
         int index = 0;
-        for (Field field : fields) {
+        for (Field value : fields) {
+            field = value;
             fieldName = field.getName();
             field.setAccessible(true);
             try {
@@ -106,15 +108,17 @@ public class PacketTableModel extends AbstractTableModel {
             }
         }
 
-        if (fieldName == null || obj == null) return null;
+        if (field == null) return null;
 
         switch (columnIndex) {
             case 0:
                 return fieldName;
             case 1:
-                return obj.getClass().getSimpleName();
+                if (obj == null) return field.getType().getSimpleName();
+                else return obj.getClass().getSimpleName();
             case 2:
-                return obj;
+                if (obj == null) return "null";
+                else return obj;
             default:
                 return null;
         }
