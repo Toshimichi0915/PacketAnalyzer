@@ -1,6 +1,7 @@
-package net.toshimichi.packetanalyzer.gui;
+package net.toshimichi.packetanalyzer.packet;
 
 import java.util.Date;
+import java.util.UUID;
 
 public class PacketDetail {
     private final Object packet;

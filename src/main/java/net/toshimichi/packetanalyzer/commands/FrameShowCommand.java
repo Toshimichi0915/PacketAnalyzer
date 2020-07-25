@@ -3,9 +3,9 @@ package net.toshimichi.packetanalyzer.commands;
 import net.toshimichi.packetanalyzer.Main;
 import net.toshimichi.packetanalyzer.events.PacketReceiveEvent;
 import net.toshimichi.packetanalyzer.events.PacketSendEvent;
-import net.toshimichi.packetanalyzer.gui.PacketBound;
-import net.toshimichi.packetanalyzer.gui.PacketDetail;
-import net.toshimichi.packetanalyzer.gui.PacketFrame;
+import net.toshimichi.packetanalyzer.packet.PacketBound;
+import net.toshimichi.packetanalyzer.packet.PacketDetail;
+import net.toshimichi.packetanalyzer.gui.MonitorFrame;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -22,7 +22,7 @@ import java.util.Set;
 
 public class FrameShowCommand implements CommandExecutor, Listener {
 
-    private final Set<PacketFrame> frames = Collections.synchronizedSet(new HashSet<>());
+    private final Set<MonitorFrame> frames = Collections.synchronizedSet(new HashSet<>());
 
     public FrameShowCommand() {
         Bukkit.getPluginManager().registerEvents(this, Main.getPlugin());
@@ -31,8 +31,8 @@ public class FrameShowCommand implements CommandExecutor, Listener {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         SwingUtilities.invokeLater(() -> {
-            PacketFrame client = new PacketFrame(PacketBound.CLIENT);
-            PacketFrame server = new PacketFrame(PacketBound.SERVER);
+            MonitorFrame client = new MonitorFrame(PacketBound.CLIENT);
+            MonitorFrame server = new MonitorFrame(PacketBound.SERVER);
             client.setLocationRelativeTo(null);
             Point point = client.getLocation();
             server.setLocation((int) point.getX() + 30, (int) point.getY() + 30);
@@ -47,7 +47,7 @@ public class FrameShowCommand implements CommandExecutor, Listener {
     private void addPacket(PacketDetail p) {
         frames.removeIf(frame -> !frame.isDisplayable());
 
-        for (PacketFrame frame : frames) {
+        for (MonitorFrame frame : frames) {
             SwingUtilities.invokeLater(() -> frame.addPacket(p));
         }
     }
@@ -65,7 +65,7 @@ public class FrameShowCommand implements CommandExecutor, Listener {
     @EventHandler
     public void onDisable(PluginDisableEvent e) {
         if (!e.getPlugin().equals(Main.getPlugin())) return;
-        for (PacketFrame frame : frames) {
+        for (MonitorFrame frame : frames) {
             SwingUtilities.invokeLater(frame::dispose);
         }
     }

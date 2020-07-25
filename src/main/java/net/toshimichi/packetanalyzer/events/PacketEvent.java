@@ -1,6 +1,6 @@
 package net.toshimichi.packetanalyzer.events;
 
-import net.toshimichi.packetanalyzer.gui.PacketDetail;
+import net.toshimichi.packetanalyzer.packet.PacketDetail;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;

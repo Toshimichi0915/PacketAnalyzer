@@ -1,7 +1,7 @@
 package net.toshimichi.packetanalyzer.events;
 
-import net.toshimichi.packetanalyzer.gui.PacketBound;
-import net.toshimichi.packetanalyzer.gui.PacketDetail;
+import net.toshimichi.packetanalyzer.packet.PacketBound;
+import net.toshimichi.packetanalyzer.packet.PacketDetail;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 
