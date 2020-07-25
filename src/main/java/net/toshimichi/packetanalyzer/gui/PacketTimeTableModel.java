@@ -28,17 +28,19 @@ public class PacketTimeTableModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 3;
+        return 4;
     }
 
     @Override
     public String getColumnName(int column) {
         switch (column) {
             case 0:
-                return "パケット";
+                return "番号";
             case 1:
-                return "送信先";
+                return "パケット";
             case 2:
+                return "送信先";
+            case 3:
                 return "日時";
             default:
                 return null;
@@ -56,10 +58,12 @@ public class PacketTimeTableModel extends AbstractTableModel {
         if(packet == null) return null;
         switch (columnIndex) {
             case 0:
-                return packet.getPacket().getClass().getSimpleName();
+                return packets.size() - rowIndex;
             case 1:
-                return packet.getBound();
+                return packet.getPacket().getClass().getSimpleName();
             case 2:
+                return packet.getBound();
+            case 3:
                 return formatter.format(packet.getDate());
             default:
                 return null;
