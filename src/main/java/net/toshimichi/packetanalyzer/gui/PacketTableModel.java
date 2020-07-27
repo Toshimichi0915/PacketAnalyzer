@@ -1,5 +1,7 @@
 package net.toshimichi.packetanalyzer.gui;
 
+import net.toshimichi.packetanalyzer.Main;
+import net.toshimichi.packetanalyzer.lang.Language;
 import org.apache.commons.lang.ArrayUtils;
 
 import javax.swing.table.AbstractTableModel;
@@ -56,13 +58,14 @@ public class PacketTableModel extends AbstractTableModel {
 
     @Override
     public String getColumnName(int column) {
+        Language lang = Main.getLanguage();
         switch (column) {
             case 0:
-                return "フィールド";
+                return lang.get("field");
             case 1:
-                return "型";
+                return lang.get("type");
             case 2:
-                return "値";
+                return lang.get("value");
             default:
                 return null;
         }
@@ -70,6 +73,7 @@ public class PacketTableModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
+        Language lang = Main.getLanguage();
         Field field = null;
         String fieldName = null;
         Object obj = null;
@@ -96,7 +100,7 @@ public class PacketTableModel extends AbstractTableModel {
 
             if (obj instanceof Object[]) {
                 if (index == rowIndex) {
-                    fieldName = fieldName + " (長さ: " + ((Object[]) obj).length + ")";
+                    fieldName = fieldName + " (" + lang.get("length") + ": " + ((Object[]) obj).length + ")";
                     break;
                 }
                 int arrayIndex = rowIndex - index - 1;

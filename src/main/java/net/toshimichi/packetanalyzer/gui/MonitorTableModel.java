@@ -1,5 +1,7 @@
 package net.toshimichi.packetanalyzer.gui;
 
+import net.toshimichi.packetanalyzer.Main;
+import net.toshimichi.packetanalyzer.lang.Language;
 import net.toshimichi.packetanalyzer.packet.PacketDetail;
 
 import javax.swing.table.AbstractTableModel;
@@ -40,13 +42,14 @@ public class MonitorTableModel extends AbstractTableModel {
 
     @Override
     public String getColumnName(int column) {
+        Language lang = Main.getLanguage();
         switch (column) {
             case 0:
-                return "パケット名";
+                return lang.get("packet");
             case 1:
-                return "送信回数";
+                return lang.get("times");
             case 2:
-                return "送信先";
+                return lang.get("bound");
             default:
                 return null;
         }

@@ -1,5 +1,7 @@
 package net.toshimichi.packetanalyzer.gui;
 
+import net.toshimichi.packetanalyzer.Main;
+import net.toshimichi.packetanalyzer.lang.Language;
 import net.toshimichi.packetanalyzer.packet.PacketComparator;
 import net.toshimichi.packetanalyzer.packet.PacketDetail;
 
@@ -33,15 +35,16 @@ public class PacketTimeTableModel extends AbstractTableModel {
 
     @Override
     public String getColumnName(int column) {
+        Language lang = Main.getLanguage();
         switch (column) {
             case 0:
-                return "番号";
+                return lang.get("number");
             case 1:
-                return "パケット";
+                return lang.get("packet");
             case 2:
-                return "送信先";
+                return lang.get("bound");
             case 3:
-                return "日時";
+                return lang.get("date");
             default:
                 return null;
         }
