@@ -41,11 +41,9 @@ public class Main extends JavaPlugin {
         parent.mkdirs();
         file.createNewFile();
         byte[] buffer = new byte[2048];
-        try (InputStream in = getResource(resource)) {
-            try (FileOutputStream out = new FileOutputStream(file)) {
-                while ((in.read(buffer)) != -1)
-                    out.write(buffer);
-            }
+        try (InputStream in = getResource(resource); FileOutputStream out = new FileOutputStream(file)) {
+            while ((in.read(buffer)) != -1)
+                out.write(buffer);
         }
     }
 
