@@ -6,7 +6,6 @@ import net.toshimichi.packetanalyzer.lang.Language;
 import net.toshimichi.packetanalyzer.lang.PropertiesLanguage;
 import net.toshimichi.packetanalyzer.utils.NativeNettyUtils;
 import net.toshimichi.packetanalyzer.utils.NettyUtils;
-import org.apache.commons.io.IOUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -16,6 +15,7 @@ import javax.swing.*;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class Main extends JavaPlugin {
 
@@ -40,8 +40,12 @@ public class Main extends JavaPlugin {
         File file = new File(parent, resource);
         parent.mkdirs();
         file.createNewFile();
-        try (FileOutputStream out = new FileOutputStream(file)) {
-            IOUtils.copy(getResource(resource), out);
+        byte[] buffer = new byte[2048];
+        try (InputStream in = getResource(resource)) {
+            try (FileOutputStream out = new FileOutputStream(file)) {
+                while ((in.read(buffer)) != -1)
+                    out.write(buffer);
+            }
         }
     }
 
