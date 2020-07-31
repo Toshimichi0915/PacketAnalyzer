@@ -10,7 +10,7 @@ Allows you to analyze packets through graphical interfaces
 4. Allows you to see all packets in chronological order
 
 ### Commands
-/monitor &lt;playername&gt; - Toggles packet analyzation
+/monitor &lt;playername&gt; - Toggles packet analysis
 
 /frame - Shows graphical interfaces 
 
