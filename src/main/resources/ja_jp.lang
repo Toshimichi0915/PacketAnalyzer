@@ -7,3 +7,7 @@ type=型
 value=値
 length=長さ
 number=番号
+monitor_start=モニタリングを開始します
+monitor_stop=モニタリングを終了します
+player_offline=プレイヤーはオフラインです
+player_not_specified=プレイヤーが指定されていません

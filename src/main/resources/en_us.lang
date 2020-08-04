@@ -7,3 +7,7 @@ type=Type
 value=Value
 length=Length
 number=Index
+monitor_start=Starting monitor
+monitor_stop=Stopping monitor
+player_offline=That player is offline
+player_not_specified=The player name is not specified

@@ -24,22 +24,22 @@ public class MonitorToggleCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (strings.length < 1) {
-            commandSender.sendMessage(ChatColor.RED + "プレイヤーを指定してください");
+            commandSender.sendMessage(ChatColor.RED + Main.getLanguage().get("player_not_specified"));
             return true;
         }
         Player player = Bukkit.getPlayerExact(strings[0]);
         if (player == null) {
-            commandSender.sendMessage(ChatColor.RED + strings[0] + "というプレイヤーはオフラインです");
+            commandSender.sendMessage(ChatColor.RED + Main.getLanguage().get("player_offline"));
             return true;
         }
 
         if (enabled.contains(player)) {
             Main.getNettyUtils().extract(player, "packet_monitor");
-            commandSender.sendMessage("モニタリングを終了します");
+            commandSender.sendMessage(Main.getLanguage().get("monitor_stop"));
             enabled.remove(player);
         } else {
             Main.getNettyUtils().inject(player, "packet_monitor", new PacketHandler(player));
-            commandSender.sendMessage("モニタリングを開始します");
+            commandSender.sendMessage(Main.getLanguage().get("monitor_start"));
             enabled.add(player);
         }
         return true;
