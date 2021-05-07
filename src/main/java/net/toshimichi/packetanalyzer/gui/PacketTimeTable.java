@@ -2,9 +2,7 @@ package net.toshimichi.packetanalyzer.gui;
 
 import net.toshimichi.packetanalyzer.packet.PacketDetail;
 
-import javax.swing.*;
-import javax.swing.table.TableModel;
-import java.awt.*;
+import javax.swing.JTable;
 import java.util.Collection;
 
 public class PacketTimeTable extends JTable {

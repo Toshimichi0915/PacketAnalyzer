@@ -4,7 +4,6 @@ import net.toshimichi.packetanalyzer.packet.PacketDetail;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.List;
 
 public class PacketTimeTableListener extends MouseAdapter {
     private final PacketTimeTable table;

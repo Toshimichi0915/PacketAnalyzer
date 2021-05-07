@@ -3,7 +3,6 @@ package net.toshimichi.packetanalyzer.utils;
 import io.netty.channel.ChannelDuplexHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelPromise;
-import net.toshimichi.packetanalyzer.events.PacketEvent;
 import net.toshimichi.packetanalyzer.events.PacketReceiveEvent;
 import net.toshimichi.packetanalyzer.events.PacketSendEvent;
 import org.bukkit.Bukkit;

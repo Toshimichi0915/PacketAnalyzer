@@ -1,9 +1,12 @@
 package net.toshimichi.packetanalyzer.gui;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import java.awt.BorderLayout;
 
-public class TableFrame extends JFrame{
+public class TableFrame extends JFrame {
 
     private final JTable table;
 

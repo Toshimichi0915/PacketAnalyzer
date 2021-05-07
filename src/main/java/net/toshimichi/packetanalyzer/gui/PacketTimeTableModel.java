@@ -51,14 +51,14 @@ public class PacketTimeTableModel extends AbstractTableModel {
     }
 
     public PacketDetail getValueAt(int rowIndex) {
-        if(packets.size() <= rowIndex) return null;
+        if (packets.size() <= rowIndex) return null;
         return packets.get(rowIndex);
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         PacketDetail packet = getValueAt(rowIndex);
-        if(packet == null) return null;
+        if (packet == null) return null;
         switch (columnIndex) {
             case 0:
                 return packets.size() - rowIndex;

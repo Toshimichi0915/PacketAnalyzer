@@ -2,10 +2,9 @@ package net.toshimichi.packetanalyzer.gui;
 
 import net.toshimichi.packetanalyzer.packet.PacketDetail;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JTable;
 
-public class MonitorTable extends JTable{
+public class MonitorTable extends JTable {
 
     private final MonitorTableModel model;
 

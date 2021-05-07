@@ -1,7 +1,6 @@
 package net.toshimichi.packetanalyzer.commands;
 
 import net.toshimichi.packetanalyzer.Main;
-import net.toshimichi.packetanalyzer.utils.NettyUtils;
 import net.toshimichi.packetanalyzer.utils.PacketHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
