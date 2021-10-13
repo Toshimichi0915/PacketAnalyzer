@@ -23,6 +23,12 @@ public class PacketTimeTableModel extends AbstractTableModel {
         formatter = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
     }
 
+    public void addPacket(PacketDetail packetDetail) {
+        packets.add(0, packetDetail);
+        int index = packets.indexOf(packetDetail);
+        fireTableRowsInserted(index, index);
+    }
+
     @Override
     public int getRowCount() {
         return packets.size();

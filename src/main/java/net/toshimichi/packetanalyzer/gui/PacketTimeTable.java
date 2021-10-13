@@ -3,6 +3,7 @@ package net.toshimichi.packetanalyzer.gui;
 import net.toshimichi.packetanalyzer.packet.PacketDetail;
 
 import javax.swing.JTable;
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class PacketTimeTable extends JTable {
@@ -15,8 +16,16 @@ public class PacketTimeTable extends JTable {
         addMouseListener(new PacketTimeTableListener(this));
     }
 
+    public PacketTimeTable() {
+        this(new ArrayList<>());
+    }
+
     @Override
     public PacketTimeTableModel getModel() {
         return model;
+    }
+
+    public void addPacket(PacketDetail packet) {
+        model.addPacket(packet);
     }
 }

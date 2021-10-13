@@ -1,12 +1,27 @@
 name: "PacketAnalyzer"
-version: "1.2"
+version: "1.3"
 main: "net.toshimichi.packetanalyzer.Main"
 commands:
-  frame:
-    usage: "/frame"
-    description: "Shows packet analyse window"
-    permission: "packetanalyzer.frame"
+  frame1:
+    usage: "/frame1"
+    aliases: "frame"
+    description: "show the packet list window (type 1)"
+    permission: "packetanalyzer.frame.1"
+  frame2:
+    usage: "/frame2"
+    description: "show the packet list window (type 2)"
+    permission: "packetanalyzer.frame.2"
   monitor:
     usage: "/monitor <player>"
-    description: "Starts/stops packet capturing"
+    description: "start capturing packets"
     permission: "packetanalyzer.monitor"
+permissions:
+  packetanalyzer.frame.*:
+    children: [ "packetanalyzer.frame.1", "packetanalyzer.frame.2" ]
+    default: op
+  packetanalyzer.frame.1:
+    default: op
+  packetanalyzer.frame.2:
+    default: op
+  packetanalyzer.monitor:
+    default: op

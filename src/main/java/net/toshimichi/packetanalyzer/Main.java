@@ -1,6 +1,7 @@
 package net.toshimichi.packetanalyzer;
 
-import net.toshimichi.packetanalyzer.commands.FrameShowCommand;
+import net.toshimichi.packetanalyzer.commands.Frame1Command;
+import net.toshimichi.packetanalyzer.commands.Frame2Command;
 import net.toshimichi.packetanalyzer.commands.MonitorToggleCommand;
 import net.toshimichi.packetanalyzer.lang.Language;
 import net.toshimichi.packetanalyzer.lang.PropertiesLanguage;
@@ -69,7 +70,8 @@ public class Main extends JavaPlugin {
         }
 
         plugin = this;
-        getCommand("frame").setExecutor(new FrameShowCommand());
+        getCommand("frame1").setExecutor(new Frame1Command());
+        getCommand("frame2").setExecutor(new Frame2Command());
         getCommand("monitor").setExecutor(new MonitorToggleCommand());
     }
 
