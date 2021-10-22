@@ -16,6 +16,7 @@ Allows you to analyze packets through graphical interfaces
 /monitor &lt;playername&gt; - Toggles packet analysis
 
 /frame - Shows graphical interfaces(per packet)
+
 /frame2 - Shows graphical interfaces(every packet)
 
 ### License
@@ -37,7 +38,9 @@ This code is under the LGPL v3
 
 /monitor &lt;playername&gt; - パケット解析を開始/停止します
 
-/frame - Show graphical interfaces /frame2 - Shows graphical interfaces(every packet)
+/frame - Show graphical interfaces 
+
+/frame2 - Shows graphical interfaces(every packet)
 
 ### ライセンス
 
