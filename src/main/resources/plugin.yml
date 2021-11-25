@@ -1,5 +1,5 @@
 name: "PacketAnalyzer"
-version: "1.4"
+version: "1.5"
 main: "net.toshimichi.packetanalyzer.Main"
 commands:
   frame1:
