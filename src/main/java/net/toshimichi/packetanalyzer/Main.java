@@ -44,8 +44,9 @@ public class Main extends JavaPlugin {
         file.createNewFile();
         byte[] buffer = new byte[2048];
         try (InputStream in = getResource(resource); FileOutputStream out = new FileOutputStream(file)) {
-            while ((in.read(buffer)) != -1)
-                out.write(buffer);
+            int len;
+            while ((len = in.read(buffer)) != -1)
+                out.write(buffer, 0, len);
         }
     }
 
