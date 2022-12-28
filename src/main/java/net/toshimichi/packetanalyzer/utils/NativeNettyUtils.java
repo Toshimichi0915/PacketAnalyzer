@@ -10,9 +10,9 @@ public class NativeNettyUtils implements NettyUtils {
 
     private Channel getChannel(Player player) {
         Object handle = utils.invoke(player, "getHandle");
-        Object connection = utils.getValue(handle, "playerConnection", "b");
-        Object network = utils.getValue(connection, "networkManager", "a");
-        return (Channel) utils.getValue(network, "channel", "k", "m");
+        Object connection = utils.getValue(handle, "PlayerConnection");
+        Object network = utils.getValue(connection, "NetworkManager");
+        return (Channel) utils.getValue(network, "Channel");
     }
 
     @Override

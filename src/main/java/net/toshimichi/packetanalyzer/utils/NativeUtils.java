@@ -23,20 +23,18 @@ public class NativeUtils {
         }
     }
 
-    public Object getValue(Object o, String... fieldNames) {
-        for (String fieldName : fieldNames) {
+    public Object getValue(Object o, String className) {
+        for (Field field : o.getClass().getDeclaredFields()) {
+            if (!field.getType().getSimpleName().equals(className)) continue;
+            field.setAccessible(true);
             try {
-                Field f = o.getClass().getField(fieldName);
-                boolean accessible = f.isAccessible();
-                f.setAccessible(true);
-                Object result = f.get(o);
-                f.setAccessible(accessible);
-                return result;
-            } catch (NoSuchFieldException | IllegalAccessException e) {
-                // maybe next one will do
+                return field.get(o);
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
             }
         }
-        throw new IllegalArgumentException("Unknown field name(s): " + Arrays.toString(fieldNames));
+
+        throw new IllegalArgumentException("Could not find class " + className + " in " + o.getClass().getName());
     }
 
     public Object invoke(Object o, String methodName, Object... args) {
